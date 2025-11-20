@@ -35,11 +35,11 @@ const Index = () => {
           <div className="flex justify-between items-center">
             <div className="text-2xl font-bold text-primary">Ернар Советович</div>
             <div className="hidden md:flex gap-8">
-              <button onClick={() => scrollToSection('hero')} className="text-foreground hover:text-secondary transition-colors">Главная</button>
-              <button onClick={() => scrollToSection('about')} className="text-foreground hover:text-secondary transition-colors">Обо мне</button>
-              <button onClick={() => scrollToSection('services')} className="text-foreground hover:text-secondary transition-colors">Услуги</button>
-              <button onClick={() => scrollToSection('prices')} className="text-foreground hover:text-secondary transition-colors">Цены</button>
-              <button onClick={() => scrollToSection('booking')} className="text-foreground hover:text-secondary transition-colors">Запись</button>
+              <button onClick={() => scrollToSection('hero')} className="text-foreground hover:text-secondary transition-colors font-medium">Главная</button>
+              <button onClick={() => scrollToSection('method')} className="text-foreground hover:text-secondary transition-colors font-medium">Методика</button>
+              <button onClick={() => scrollToSection('about')} className="text-foreground hover:text-secondary transition-colors font-medium">Сообщество</button>
+              <button onClick={() => scrollToSection('prices')} className="text-foreground hover:text-secondary transition-colors font-medium">Цены</button>
+              <button onClick={() => scrollToSection('booking')} className="text-foreground hover:text-secondary transition-colors font-medium">Запись</button>
             </div>
             <Button onClick={() => scrollToSection('booking')} className="hidden md:inline-flex">
               Записаться
@@ -48,84 +48,188 @@ const Index = () => {
         </nav>
       </header>
 
-      <section id="hero" className="pt-32 pb-20 px-6">
-        <div className="container mx-auto">
+      <section id="hero" className="relative pt-32 pb-20 px-6 min-h-[80vh] flex items-center">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://cdn.poehali.dev/projects/161050fa-4e14-4c34-9375-48d73cf852de/files/09695e79-d046-409c-bbe0-6ec511b73013.jpg" 
+            alt="Фон" 
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/80"></div>
+        </div>
+        <div className="container mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in">
-              <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6 leading-tight">
+              <h1 className="text-5xl md:text-7xl font-bold text-primary mb-6 leading-tight">
                 Ернар Советович
               </h1>
-              <p className="text-2xl text-secondary font-semibold mb-4">Остеопат • Биопрактик</p>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Профессиональная остеопатическая помощь для восстановления здоровья и улучшения качества жизни. 
-                Индивидуальный подход к каждому пациенту.
+              <p className="text-3xl font-bold text-accent mb-4">Биопрактик • Остеопат</p>
+              <p className="text-2xl text-foreground font-semibold mb-6 leading-relaxed">
+                Моя авторская методика биодинамики помогает там, где медицина бессильна
               </p>
-              <div className="flex gap-4">
-                <Button size="lg" onClick={() => scrollToSection('booking')} className="text-lg">
+              <div className="flex flex-wrap gap-4">
+                <Button size="lg" onClick={() => scrollToSection('booking')} className="text-lg bg-accent hover:bg-accent/90">
                   <Icon name="Calendar" className="mr-2" size={20} />
                   Записаться на приём
                 </Button>
-                <Button size="lg" variant="outline" onClick={() => scrollToSection('about')}>
-                  Узнать больше
+                <Button size="lg" variant="outline" onClick={() => scrollToSection('method')} className="border-2 border-secondary text-foreground hover:bg-secondary/10">
+                  Узнать о методике
                 </Button>
               </div>
             </div>
             <div className="animate-scale-in">
               <img 
                 src="https://cdn.poehali.dev/projects/161050fa-4e14-4c34-9375-48d73cf852de/files/09695e79-d046-409c-bbe0-6ec511b73013.jpg" 
-                alt="Остеопат Ернар Советович" 
-                className="rounded-2xl shadow-2xl w-full"
+                alt="Ернар Советович" 
+                className="rounded-2xl shadow-2xl w-full border-4 border-secondary"
               />
             </div>
           </div>
         </div>
       </section>
 
+      <section id="method" className="py-20 px-6 bg-accent/5">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12 animate-fade-in">
+            <h2 className="text-4xl font-bold text-primary mb-4">Авторская методика биодинамики</h2>
+            <div className="w-20 h-1 bg-secondary mx-auto mb-6"></div>
+            <p className="text-xl text-foreground font-semibold">Помогает там, где медицина бессильна</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <Card className="bg-white hover:shadow-xl transition-shadow border-l-4 border-accent">
+              <CardHeader>
+                <CardTitle className="text-2xl text-primary">Методика включает:</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3 text-lg">
+                  <li className="flex items-start gap-3">
+                    <Icon name="CheckCircle" className="text-accent mt-1 flex-shrink-0" size={24} />
+                    <span>Остеопатию</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Icon name="CheckCircle" className="text-accent mt-1 flex-shrink-0" size={24} />
+                    <span>Висцеральный массаж</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Icon name="CheckCircle" className="text-accent mt-1 flex-shrink-0" size={24} />
+                    <span>Точечное воздействие (восточная медицина)</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Icon name="CheckCircle" className="text-accent mt-1 flex-shrink-0" size={24} />
+                    <span>Звуковую терапию</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white hover:shadow-xl transition-shadow border-l-4 border-secondary">
+              <CardHeader>
+                <CardTitle className="text-2xl text-primary">Что даёт биодинамика:</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3 text-lg">
+                  <li className="flex items-start gap-3">
+                    <Icon name="Sparkles" className="text-secondary mt-1 flex-shrink-0" size={24} />
+                    <span>Устраняет хронические боли</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Icon name="Sparkles" className="text-secondary mt-1 flex-shrink-0" size={24} />
+                    <span>Восстанавливает баланс организма</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Icon name="Sparkles" className="text-secondary mt-1 flex-shrink-0" size={24} />
+                    <span>Открывает энергетические каналы</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Icon name="Sparkles" className="text-secondary mt-1 flex-shrink-0" size={24} />
+                    <span>Возвращает радость жизни</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card className="bg-gradient-to-r from-primary/5 to-accent/5 border-2 border-primary">
+            <CardHeader>
+              <CardTitle className="text-2xl text-primary text-center">Как проходит сеанс?</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-3 gap-6 text-center">
+                <div>
+                  <div className="mx-auto mb-4 w-16 h-16 bg-accent rounded-full flex items-center justify-center">
+                    <Icon name="Search" size={32} className="text-white" />
+                  </div>
+                  <h3 className="font-bold text-lg mb-2">Диагностика</h3>
+                  <p className="text-muted-foreground">Комплексная оценка состояния</p>
+                </div>
+                <div>
+                  <div className="mx-auto mb-4 w-16 h-16 bg-secondary rounded-full flex items-center justify-center">
+                    <Icon name="Clock" size={32} className="text-white" />
+                  </div>
+                  <h3 className="font-bold text-lg mb-2">Длительность</h3>
+                  <p className="text-muted-foreground">1 час</p>
+                </div>
+                <div>
+                  <div className="mx-auto mb-4 w-16 h-16 bg-primary rounded-full flex items-center justify-center">
+                    <Icon name="TrendingUp" size={32} className="text-white" />
+                  </div>
+                  <h3 className="font-bold text-lg mb-2">Результаты</h3>
+                  <p className="text-muted-foreground">После 1–2 сеансов</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
       <section id="about" className="py-20 px-6 bg-card">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12 animate-fade-in">
-            <h2 className="text-4xl font-bold text-primary mb-4">Обо мне</h2>
+            <h2 className="text-4xl font-bold text-primary mb-4">Присоединяйтесь к сообществу</h2>
             <div className="w-20 h-1 bg-secondary mx-auto"></div>
           </div>
           
-          <div className="space-y-6 text-lg leading-relaxed animate-fade-in">
-            <p>
-              Остеопатия — это целостный подход к диагностике и лечению, направленный на восстановление 
-              естественного баланса организма. Я работаю с пациентами всех возрастов, помогая им 
-              справиться с различными проблемами опорно-двигательного аппарата и внутренних органов.
-            </p>
-            
-            <div className="grid md:grid-cols-3 gap-6 mt-12">
-              <Card className="text-center hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="mx-auto mb-4 w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center">
-                    <Icon name="Award" size={32} className="text-secondary" />
-                  </div>
-                  <CardTitle>15+ лет</CardTitle>
-                  <CardDescription>практического опыта</CardDescription>
-                </CardHeader>
-              </Card>
-              
-              <Card className="text-center hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="mx-auto mb-4 w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center">
-                    <Icon name="Users" size={32} className="text-secondary" />
-                  </div>
-                  <CardTitle>2000+</CardTitle>
-                  <CardDescription>пациентов</CardDescription>
-                </CardHeader>
-              </Card>
-              
-              <Card className="text-center hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="mx-auto mb-4 w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center">
-                    <Icon name="Heart" size={32} className="text-secondary" />
-                  </div>
-                  <CardTitle>100%</CardTitle>
-                  <CardDescription>индивидуальный подход</CardDescription>
-                </CardHeader>
-              </Card>
-            </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="hover:shadow-xl transition-all hover:-translate-y-1 border-2 border-accent">
+              <CardHeader>
+                <div className="mb-4 w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
+                  <Icon name="MessageCircle" size={28} className="text-accent" />
+                </div>
+                <CardTitle className="text-xl">WhatsApp сообщество</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-base mb-4">
+                  Делюсь важной и полезной информацией. Все скидки, акции и бонусы — для подписчиков первыми!
+                </CardDescription>
+                <Button asChild className="w-full bg-accent hover:bg-accent/90">
+                  <a href="https://chat.whatsapp.com/JdS7CipprOuGoFpzuhZeEa" target="_blank" rel="noopener noreferrer">
+                    <Icon name="MessageCircle" className="mr-2" size={20} />
+                    Присоединиться
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-xl transition-all hover:-translate-y-1 border-2 border-primary">
+              <CardHeader>
+                <div className="mb-4 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <Icon name="Send" size={28} className="text-primary" />
+                </div>
+                <CardTitle className="text-xl">Telegram канал</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-base mb-4">
+                  Полезные советы, лайфхаки для здоровья и эксклюзивный контент о биодинамике.
+                </CardDescription>
+                <Button asChild variant="outline" className="w-full border-2 border-primary hover:bg-primary/10">
+                  <a href="https://t.me/yernarpotok" target="_blank" rel="noopener noreferrer">
+                    <Icon name="Send" className="mr-2" size={20} />
+                    Подписаться
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -239,53 +343,29 @@ const Index = () => {
           </div>
 
           <div className="space-y-4">
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-lg transition-shadow border-l-4 border-accent">
               <CardHeader>
                 <div className="flex justify-between items-center">
                   <div>
-                    <CardTitle className="text-xl">Первичная консультация</CardTitle>
-                    <CardDescription className="mt-2">Диагностика и составление плана лечения (90 минут)</CardDescription>
+                    <CardTitle className="text-2xl">Первый сеанс</CardTitle>
+                    <CardDescription className="mt-2 text-base">Диагностика + лечение (60 минут)</CardDescription>
                   </div>
-                  <div className="text-3xl font-bold text-secondary">8 000 ₸</div>
+                  <div className="text-4xl font-bold text-accent">20 000 ₸</div>
                 </div>
               </CardHeader>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-lg transition-shadow border-2 border-secondary shadow-md">
               <CardHeader>
                 <div className="flex justify-between items-center">
                   <div>
-                    <CardTitle className="text-xl">Повторный приём</CardTitle>
-                    <CardDescription className="mt-2">Остеопатическое лечение (60 минут)</CardDescription>
-                  </div>
-                  <div className="text-3xl font-bold text-secondary">6 000 ₸</div>
-                </div>
-              </CardHeader>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="flex justify-between items-center">
-                  <div>
-                    <CardTitle className="text-xl">Детский приём</CardTitle>
-                    <CardDescription className="mt-2">Остеопатия для детей 0-14 лет (45 минут)</CardDescription>
-                  </div>
-                  <div className="text-3xl font-bold text-secondary">5 000 ₸</div>
-                </div>
-              </CardHeader>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow border-2 border-secondary">
-              <CardHeader>
-                <div className="flex justify-between items-center">
-                  <div>
-                    <CardTitle className="text-xl flex items-center gap-2">
-                      Абонемент на 5 сеансов
-                      <span className="text-sm bg-secondary text-white px-3 py-1 rounded-full">-15%</span>
+                    <CardTitle className="text-2xl flex items-center gap-2">
+                      Курс от 6 сеансов
+                      <span className="text-sm bg-secondary text-foreground px-3 py-1 rounded-full font-semibold">Выгодно</span>
                     </CardTitle>
-                    <CardDescription className="mt-2">Экономия 4 500 ₸</CardDescription>
+                    <CardDescription className="mt-2 text-base">15 000 ₸ за сеанс • Экономия 30 000 ₸</CardDescription>
                   </div>
-                  <div className="text-3xl font-bold text-secondary">25 500 ₸</div>
+                  <div className="text-4xl font-bold text-secondary">15 000 ₸</div>
                 </div>
               </CardHeader>
             </Card>
@@ -408,17 +488,18 @@ const Index = () => {
             <div>
               <h4 className="text-lg font-semibold mb-4">Контакты</h4>
               <div className="space-y-2 text-primary-foreground/80">
-                <p className="flex items-center gap-2">
-                  <Icon name="Phone" size={18} />
-                  +7 (777) 123-45-67
+                <p className="flex items-start gap-2">
+                  <Icon name="MapPin" size={18} className="mt-1 flex-shrink-0" />
+                  <span>г. Алматы, ул. Нажимеденова 10/4<br />
+                  Вход в «Хозяюшка», 5 кабинет</span>
                 </p>
                 <p className="flex items-center gap-2">
-                  <Icon name="Mail" size={18} />
-                  ernar@osteopat.kz
+                  <Icon name="MessageCircle" size={18} />
+                  WhatsApp сообщество
                 </p>
                 <p className="flex items-center gap-2">
-                  <Icon name="MapPin" size={18} />
-                  г. Алматы, ул. Медицинская, 15
+                  <Icon name="Send" size={18} />
+                  Telegram канал
                 </p>
               </div>
             </div>
